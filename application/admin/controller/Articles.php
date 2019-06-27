@@ -9,7 +9,7 @@
 namespace app\admin\controller;
 use app\admin\helper\ArticlerHelper;
 
-class Article
+class Articles
 {
     /**
      * upload image
