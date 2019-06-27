@@ -5,10 +5,7 @@
  * Date: 2019-03-30
  * Time: 14:43
  */
-
 namespace app\index\helper;
-
-
 use think\Db;
 
 class IndexHelper

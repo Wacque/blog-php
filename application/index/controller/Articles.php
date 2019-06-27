@@ -13,6 +13,10 @@ use app\index\helper\Parser;
 
 class Articles
 {
+    /**
+     * get article list
+     * @return \think\response\Json
+     */
     public function get_article_list() {
         $type = input('type');
         $cateId = 0;
@@ -23,20 +27,13 @@ class Articles
         return defaultData(0, 'ok', $res, count($res));
     }
 
+    /**
+     * get article detail
+     * @return \think\response\Json
+     */
     public function get_article_content() {
         $passageId = input('id');
         $res = ArticleHelper::getArticleContent($passageId);
-//        $articleName = IndexHelper::articleIdToName($passageId)['name'];
-//        if(empty($articleName)) {
-//            return defaultData(0, 'invalid article id', [], 0);
-//        }
-//        $parser = new Parser();
-//        $text = file_get_contents(' ../../../public/static/passages/' . $articleName . '.md');
-//        $html = $parser->makeHtml($text);
-//        $res = Array(
-//            'name' => $articleName,
-//            'html' => $html
-//        );
         return defaultData(0, 'ok',$res, 0);
     }
 

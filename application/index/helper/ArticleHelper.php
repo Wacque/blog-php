@@ -5,10 +5,9 @@
  * Date: 2019-06-27
  * Time: 00:26
  */
-
 namespace app\index\helper;
-
 use think\Db;
+
 class ArticleHelper
 {
     static function getArticleContent($id) {
@@ -19,4 +18,6 @@ class ArticleHelper
 
         return $res;
     }
+
+
 }
