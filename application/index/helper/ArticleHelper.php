@@ -11,8 +11,8 @@ use think\Db;
 class ArticleHelper
 {
     static function getArticleContent($id) {
-        $res = Db::name('passages')
-            ->field('id, name, author, delta, html, create_time, update_time, cate_id')
+        $res = Db::name('post')
+            ->field('id, title, author, html, create_time, update_time, cate_id')
             ->where('id', $id)
             ->find();
 

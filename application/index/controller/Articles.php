@@ -36,6 +36,4 @@ class Articles
         $res = ArticleHelper::getArticleContent($passageId);
         return defaultData(0, 'ok',$res, 0);
     }
-
-
 }

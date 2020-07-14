@@ -11,8 +11,8 @@ use think\Db;
 class IndexHelper
 {
     static function getCatePassage($cateId) {
-        $res = Db::name('passages')
-            ->field('id,name,author,create_time');
+        $res = Db::name('post')
+            ->field('id, title, author, create_time');
         if ($cateId > 0){
             $res = $res->where('cate_id', $cateId);
         }
@@ -21,16 +21,16 @@ class IndexHelper
     }
 
     static function getCateId($cateName) {
-        $res = Db::name('passages_cate')
+        $res = Db::name('category')
             ->field('id')
-            ->where('cate_name', $cateName)
+            ->where('name', $cateName)
             ->find();
 
         return $res;
     }
 
     static function articleIdToName($id) {
-        $res = Db::name('passages')
+        $res = Db::name('post')
             ->field('id, name')
             ->where('id', $id)
             ->find();

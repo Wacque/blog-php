@@ -7,7 +7,10 @@
  */
 
 namespace app\admin\controller;
+use app\admin\helper\ArticleHelper;
 use app\admin\helper\ArticlerHelper;
+use think\Exception;
+use think\exception\PDOException;
 
 class Articles
 {
@@ -32,18 +35,37 @@ class Articles
     }
 
     /**
-     * update article
      * @return \think\response\Json
+     * @throws Exception
+     * @throws PDOException
      */
     public function update_article_content() {
-        $passageId = input('post.id');
+        $id = input('post.id');
         $html = input('post.html');
-        $delta = input('post.delta');
-        $name = input('post.name');
-        if(! $passageId || !$html ) {
+        $title = input('post.title');
+
+        if(!$id || !$html ) {
             return defaultData(-1, 'error', [], 0);
         }
-        $res = ArticleHelper::updateArticleContent($passageId, $html, $delta, $name);
+
+        $res = ArticleHelper::updateArticleContent($id, $html, $title);
+        return defaultData(0, 'ok',$res, 0);
+    }
+
+    /**
+     * @return \think\response\Json
+     */
+    public function add_article_content() {
+        $html = input('post.html');
+        $title = input('post.title');
+        $cateId = input('post.cateId');
+
+        if(!$html || !$title || !$cateId) {
+            return defaultData(-1, 'error', [], 0);
+        }
+
+        $res = ArticleHelper::addPostContent($html, $title, $cateId);
+
         return defaultData(0, 'ok',$res, 0);
     }
 }
